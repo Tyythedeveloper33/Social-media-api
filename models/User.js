@@ -1,29 +1,34 @@
 // Require schema and model from mongoose
-const mongoose = require('mongoose');
-const thoughtSchema = new mongoose.Schema({
-  title: { type: String, required: false },
- 
-});
-const friendsSchema = new mongoose.Schema({
-  title: { type: String, required: true },
- 
-});
-// Construct a new instance of the schema class
-const UserSchema = new mongoose.Schema({
+const { Schema, model } = require("mongoose");
+
+const UserSchema = new Schema(
+  {
   // Configure individual properties using Schema Types
-  username: { type: String, required: true },
+  username: { type: String, required: true , unique: true, trim: true},
   thoughts: { type: String, required: false },
   // The type of data is set to 'String' and required is set to false, meaning it will accept null values
-  friends: [friendsSchema],
-  thoughts: [thoughtSchema],
-  reactionCount: Number,
-  // Use built in date method to get current date
-  email:{ type: String, required: true }, 
-  createdat: { type: Date, default: Date.now },
-});
+  friends: [ 
+    {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+],
+  thoughts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Thought",
+    },
+  ],
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+);
 
-// Using mongoose.model() to compile a model based on the schema 'bookSchema'
-const Users = mongoose.model('MyUser', UserSchema);
+UserSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
 
 // Create new instances of the model, a document
 Users.create([
@@ -36,4 +41,6 @@ Users.create([
   { username: 'glorr',email: "gloriaa22@gmail.com" },
 ]);
 
-module.exports = Users;
+const User = model("MyUser", UserSchema);
+
+module.exports = User;

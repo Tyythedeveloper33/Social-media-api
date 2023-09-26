@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.get('/allUsers', async (req, res) => {
   try {
-    const result = await Users.find({});
+    const result = await Users.find({}).populate('friends').populate('thoughts');
     res.status(200).json(result);
   } catch (err) {
     res.status(500).send(err);
