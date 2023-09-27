@@ -17,7 +17,7 @@ router.route("/").get(getAllThoughts).post(createNewThought) // works perfect
 router.route("/:thoughtId").get(getOneThought).put(updateThought).delete(deleteThought); // works perfect
 
 router.route('/:thoughtId/reactions').post(createReaction); // working
-router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction); // createreaction is adding a frinds to the friends list instead of adding reaction
+router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction); // working
 
 
 module.exports = router;

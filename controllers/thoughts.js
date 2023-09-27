@@ -109,7 +109,7 @@ const thoughtsFunctions = {
     // Use the Mongoose `findOneAndUpdate` method to find and update a thought by its thought ID
     thoughts.findOneAndUpdate(
       { _id: req.params.thoughtId }, // Find the thought by its thought ID
-      { $pull: { reactions: { reactionId: req.params.reactionId } } }, // Remove the specified reaction from the 'reactions' array
+      { $pull: { reactions: { _id: req.params.reactionId } } }, // Remove the specified reaction from the 'reactions' array
       { runValidators: true, new: true } // Options: run validators and return the updated thought data
     )
       .then((thoughtData) => {
