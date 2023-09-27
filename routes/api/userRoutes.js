@@ -12,10 +12,10 @@ const {
 } = require('../../controllers/user') // file holding thes names for proper functionality
 
 //  api/user
-router.route("/").get(getAllUsers).post(createNewUser)
+router.route("/").get(getAllUsers).post(createNewUser) //works perfectly
 
-router.route("/:userId").get(getOneUser).put(updateUser).delete(deleteUser);
+router.route("/:userId").get(getOneUser).put(updateUser).delete(deleteUser); // works perfectly
 
-router.route("/:userId/friends/:friendId").post(addNewFriend).delete(deleteFromFl);
+router.route("/:userId/friends/:friendId").post(addNewFriend).delete(deleteFromFl); // working successfully
 
 module.exports = router;

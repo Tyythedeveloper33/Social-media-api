@@ -16,34 +16,3 @@ app.use(routes);
      });
  });
 
-// app.get('/allUsers', async (req, res) => {
-//   try {
-//     const result = await Users.find({}).populate('friends').populate('thoughts');
-//     res.status(200).json(result);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
-
-// app.get('/sum-price', async (req, res) => {
-//   try {
-//     const result = await Book
-//       .aggregate([
-//         { $match: { inStock: true } },
-//         {
-//           $group: {
-//             _id: null,
-//             sum_price: { $sum: '$price' },
-//             avg_price: { $avg: '$price' },
-//             max_price: { $max: '$price' },
-//             min_price: { $min: '$price' },
-//           },
-//         },
-//       ]);
-//     res.status(200).json(result);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
-
-

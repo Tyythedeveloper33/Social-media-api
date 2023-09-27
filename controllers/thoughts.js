@@ -132,8 +132,6 @@ const thoughtsFunctions = {
     // Use the Mongoose `findOneAndUpdate` method to find and update a user by their user ID
     thoughts.findOneAndRemove(
       { _id: req.params.userId }, // Find the user by their user ID
-    
-     
     )
       .then((thoughtsData) => {
         if (!thoughtsData) {

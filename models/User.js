@@ -12,7 +12,7 @@ UserSchema.virtual("friendCount").get(function () {
 });
 
 // Create the User model based on the schema
-const User = model("MyUser", UserSchema);
+const User = model("User", UserSchema);
 
 // Usage example: Create new instances of the model, a document
 User.create([
