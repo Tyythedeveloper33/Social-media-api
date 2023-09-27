@@ -7,15 +7,14 @@ const {
     updateUser, // by _id
     deleteUser,    // by _id
 //    **`/api/users/:userId/friends/:friendId`**
-   addNewFriend,
+  addNewFriend,
    deleteFromFl
-} = require // file holding thes names for proper functionality
+} = require('../../controllers/user') // file holding thes names for proper functionality
 
 //  api/user
 router.route("/").get(getAllUsers).post(createNewUser)
 
-router
-.route("/:userId").get(getOneUser).put(updateUser).delete(deleteUser);
+router.route("/:userId").get(getOneUser).put(updateUser).delete(deleteUser);
 
 router.route("/:userId/friends/:friendId").post(addNewFriend).delete(deleteFromFl);
 

@@ -9,7 +9,7 @@ const {
 //    **`/api/thoughts/:thoughtId/reactions`**
    createReaction,
    deleteReaction
-} = require // file holding thes names for proper functionality
+} = require('../../controllers/thoughts') // file holding thes names for proper functionality
 
 //  api/user
 router.route("/").get(getAllThoughts).post(createNewThought)
@@ -18,5 +18,6 @@ router
 .route("/:thoughtId").get(getOneThought).put(updateThought).delete(deleteThought);
 
 router.route("/:userId/friends/:friendId").post(createReaction).delete(deleteReaction);
+
 
 module.exports = router;
