@@ -84,7 +84,7 @@ const thoughtsFunctions = {
  createReaction(req, res) {
     // Use the Mongoose `findOneAndUpdate` method to find and update a user by their user ID
     thoughts.findOneAndUpdate(
-      { _id: req.params.userId }, // Find the user by their user ID
+      { _id: req.params.thoughtId }, // Find the user by their user ID
       { $addToSet: { reactions: req.body } }, // Add the friend to the 'friends' array (if not already present)
       { new: true } // Options: return the updated user data
     )
@@ -107,7 +107,7 @@ const thoughtsFunctions = {
    // Delete a specific reaction from a thought by thought ID and reaction ID
    deleteReaction(req, res) {
     // Use the Mongoose `findOneAndUpdate` method to find and update a thought by its thought ID
-    Thoughts.findOneAndUpdate(
+    thoughts.findOneAndUpdate(
       { _id: req.params.thoughtId }, // Find the thought by its thought ID
       { $pull: { reactions: { reactionId: req.params.reactionId } } }, // Remove the specified reaction from the 'reactions' array
       { runValidators: true, new: true } // Options: run validators and return the updated thought data
@@ -131,7 +131,7 @@ const thoughtsFunctions = {
    deleteThought(req, res) {
     // Use the Mongoose `findOneAndUpdate` method to find and update a user by their user ID
     thoughts.findOneAndRemove(
-      { _id: req.params.userId }, // Find the user by their user ID
+      { _id: req.params.thoughtId }, // Find the user by their user ID
     )
       .then((thoughtsData) => {
         if (!thoughtsData) {
